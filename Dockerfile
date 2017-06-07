@@ -12,4 +12,4 @@ RUN apt-get update && \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
 
-CMD ["telegraf"]
+# CMD ["telegraf"]
