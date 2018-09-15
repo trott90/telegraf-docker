@@ -1,6 +1,6 @@
-FROM telegraf:1.7.4
+FROM telegraf:latest
 
-MAINTAINER mezz64 <jtmihalic@gmail.com>
+MAINTAINER Giblet
 
 RUN apt-get update && \
     apt-get install -yq \
