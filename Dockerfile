@@ -1,4 +1,4 @@
-FROM telegraf:latest
+FROM telegraf:1.7.4
 
 MAINTAINER mezz64 <jtmihalic@gmail.com>
 
