@@ -1,4 +1,4 @@
-FROM telegraf:1.7.4
+FROM telegraf:1.8.0
 
 MAINTAINER giblet
 
