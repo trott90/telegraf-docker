@@ -4,7 +4,8 @@ MAINTAINER Giblet
 
 RUN apt-get update && \
     apt-get install -yq \
-    ipmitool && \
+    ipmitool \
+    snmp-mibs-downloader && \
 # Cleanup
     apt-get clean && \
     rm -rf \
