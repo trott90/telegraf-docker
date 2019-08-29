@@ -13,7 +13,7 @@ RUN export  DEBIAN_FRONTEND=noninteractive && \
      echo "deb http://httpredir.debian.org/debian ${DEBIAN_RELEASE} main contrib non-free"  >> /etc/apt/sources.list && \
      echo "deb http://httpredir.debian.org/debian ${DEBIAN_RELEASE}-updates main contrib non-free"  >> /etc/apt/sources.list && \
      echo "deb http://security.debian.org ${DEBIAN_RELEASE}/updates main contrib non-free"  >> /etc/apt/sources.list && \
-    set -x &&\
+    set -x && \
     apt-get update && \
     apt-get -yq install ipmitool snmp-mibs-downloader && \
     
