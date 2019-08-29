@@ -1,11 +1,22 @@
 FROM telegraf:latest
 
-MAINTAINER Giblet
+MAINTAINER Shiqi
 
-RUN apt-get update && \
-    apt-get install -yq \
-    ipmitool \
-    snmp-mibs-downloader && \
+RUN export  DEBIAN_FRONTEND=noninteractive && \
+     export DEBIAN_RELEASE=$(awk -F'[" ]' '/VERSION=/{print $3}'  /etc/os-release | tr -cd '[[:alnum:]]._-' ) && \
+     echo "remove main from /etc/apt/sources.list" && \
+     sed -i '/main/d' /etc/apt/sources.list && \
+     echo "remove contrib from /etc/apt/sources.list" && \
+     sed -i '/contrib/d' /etc/apt/sources.list && \
+     echo "remove non-free from /etc/apt/sources.list" && \
+     sed -i '/non-free/d' /etc/apt/sources.list && \
+     echo "deb http://httpredir.debian.org/debian ${DEBIAN_RELEASE} main contrib non-free"  >> /etc/apt/sources.list && \
+     echo "deb http://httpredir.debian.org/debian ${DEBIAN_RELEASE}-updates main contrib non-free"  >> /etc/apt/sources.list && \
+     echo "deb http://security.debian.org ${DEBIAN_RELEASE}/updates main contrib non-free"  >> /etc/apt/sources.list && \
+    set -x &&\
+    apt-get update && \
+    apt-get -yq install ipmitool snmp-mibs-downloader && \
+    
 # Cleanup
     apt-get clean && \
     rm -rf \
